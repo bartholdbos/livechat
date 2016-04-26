@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto N/A
 // @namespace    https://github.com/bartholdbos/livechat
-// @version      0.1
+// @version      0.2
 // @description  Automatic Non Accepting on end of shift
 // @author       Barthold Bos
 // @match        https://my.livechatinc.com/*
