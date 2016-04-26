@@ -1,2 +1,2 @@
 # livechat
-utomatic Non Accepting on end of shift
+Automatic Non Accepting on end of shift
