@@ -7,13 +7,12 @@
 // @match        https://my.livechatinc.com/*
 // @grant        none
 // @require      https://raw.githubusercontent.com/mozilla-comm/ical.js/master/build/ical.min.js
-// @downloadURL  https://raw.githubusercontent.com/bartholdbos/livechat/master/livechat.js
+// @downloadURL  https://raw.githubusercontent.com/bartholdbos/livechat/master/livechat.user.js
 // ==/UserScript==
 
 $(window).load(function(){
     $.get("https://xss.bos.cloud/", parse);
     $("#menu ul").append('<li><a id="autona">Auto NA</a></li>');
-    $("#autona").onClick();
 });
 
 function parse(data, textStatus, jqXHR ){
