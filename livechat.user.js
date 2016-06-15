@@ -38,7 +38,7 @@ function parse(data, textStatus, jqXHR ){
 }
 
 function autona(property){
-    var time = new Date(ICAL.Time.fromData(property).toUnixTime()*1000);
+    var time = new Date((ICAL.Time.fromData(property).toUnixTime()- 600)*1000);
     var now = new Date();
     var timetillNA = time - now;
     if(timetillNA >= 0){
