@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto N/A
 // @namespace    https://github.com/bartholdbos/livechat
-// @version      0.3
+// @version      0.4
 // @description  Automatic Non Accepting on end of shift
 // @author       Barthold Bos
 // @match        https://my.livechatinc.com/*
@@ -32,13 +32,18 @@ function start(ical){
 function parse(data, textStatus, jqXHR ){
     var calendar = ICAL.parse(data);
     var calendarcomp = new ICAL.Component(calendar);
-    var event = calendarcomp.getAllSubcomponents('vevent');
-    var property = event[0].getFirstPropertyValue("dtend");
-    autona(property);
+    var events = calendarcomp.getAllSubcomponents('vevent');
+    var shift1 = ICAL.Time.fromData(events[0].getFirstPropertyValue("dtend"));
+    var shift2 = ICAL.Time.fromData(events[1].getFirstPropertyValue("dtend"));
+    if(shift1.dayOfYear() == shift2.dayOfYear()){
+        autona(shift2);
+    }else{
+        autona(shift1);
+    }
 }
 
-function autona(property){
-    var time = new Date((ICAL.Time.fromData(property).toUnixTime()- 600)*1000);
+function autona(prop){
+    var time = new Date((prop.toUnixTime()- 600)*1000);
     var now = new Date();
     var timetillNA = time - now;
     if(timetillNA >= 0){
